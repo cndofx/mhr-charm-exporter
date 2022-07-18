@@ -4,14 +4,13 @@ mod process;
 
 use std::fs::File;
 use std::io::{BufWriter, Write};
-use process_memory::{DataMember, Memory, ProcessHandle, TryIntoProcessHandle};
-use sysinfo::{AsU32, ProcessExt, System, SystemExt};
+use process_memory::{DataMember, Memory, ProcessHandle};
 
 use process::GameOpenError::{FailedToOpenProcess, NoGameProcessFound};
 
 #[cfg(windows)]
 fn main() {
-    let proc = process::open_game_process().unwrap();
+    let proc = process::get_process_handle("MonsterHunterRise.exe").unwrap();
 
     let manager = DataManager::new(proc);
 
