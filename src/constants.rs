@@ -1,5 +1,3 @@
-//Empty skill names are unallocated (or in case of the first one reserved for no skill
-//Setting these to empty so it's easier to print
 pub(crate) const SKILL_NAMES: [&str; 112] = [
     "",
     "Attack Boost",

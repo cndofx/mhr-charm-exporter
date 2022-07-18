@@ -1,17 +1,14 @@
 mod constants;
-mod structs;
-mod process;
 mod data;
+mod datamanager;
+mod process;
 
+use datamanager::DataManager;
 use std::fs::File;
 use std::io::{BufWriter, Write};
-use process_memory::{DataMember, Memory, ProcessHandle};
-use data::DataManager;
 
 #[cfg(windows)]
 fn main() {
-    
-
     let proc = process::get_process_handle("MonsterHunterRise.exe").unwrap();
 
     let manager = DataManager::new(proc);
