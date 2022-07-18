@@ -20,5 +20,6 @@ fn main() {
 
     for c in charms {
         writeln!(&mut writer, "{}", c).unwrap();
+        println!("{}", c);
     }
 }

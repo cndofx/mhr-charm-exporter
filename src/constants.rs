@@ -116,11 +116,10 @@ pub(crate) const SKILL_NAMES: [&str; 112] = [
 pub(crate) const CHARM_EQUIPMENT_TYPE: u32 = 3;
 
 pub(crate) mod offsets {
-    pub const DATA_MANAGER: usize = 0x14C0207E0;
-    pub const EQUIPMENT_BOX: usize = 0x80;
+    pub const STORAGE_BASE: usize = 0x14E96B280;
+    // equipment box = [[[STORAGE_BASE+0x88]+0x98]+0x10]
     pub const EQUIPMENT_LIST: usize = 0x20;
-    pub const EQUIPMENT_ITEMS: usize = 0x10;
-    pub const EQUIPMENT_SIZE: usize = 0x18;
+    pub const EQUIPMENT_SIZE: usize = 0x1C;
 
     pub const EQUIPMENT_TYPE: usize = 0x2C;
 
