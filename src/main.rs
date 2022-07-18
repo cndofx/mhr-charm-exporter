@@ -1,16 +1,17 @@
 mod constants;
 mod structs;
+mod process;
 
 use std::fs::File;
 use std::io::{BufWriter, Write};
 use process_memory::{DataMember, Memory, ProcessHandle, TryIntoProcessHandle};
 use sysinfo::{AsU32, ProcessExt, System, SystemExt};
 
-use crate::GameOpenError::{FailedToOpenProcess, NoGameProcessFound};
+use process::GameOpenError::{FailedToOpenProcess, NoGameProcessFound};
 
 #[cfg(windows)]
 fn main() {
-    let proc = open_game_process().unwrap();
+    let proc = process::open_game_process().unwrap();
 
     let manager = DataManager::new(proc);
 
@@ -21,30 +22,6 @@ fn main() {
 
     for c in charms {
         writeln!(&mut writer, "{}", c).unwrap();
-    }
-}
-
-#[derive(Debug)]
-enum GameOpenError {
-    NoGameProcessFound,
-    FailedToOpenProcess,
-}
-
-#[cfg(windows)]
-fn open_game_process() -> Result<ProcessHandle, GameOpenError> {
-    let mut sys = System::new_all();
-    sys.refresh_components();
-
-    let procs = sys.process_by_name("MonsterHunterRise.exe");
-
-    if procs.is_empty() {
-        return Err(NoGameProcessFound);
-    }
-
-    if let Ok(proc) = procs[0].pid().as_u32().try_into_process_handle() {
-        Ok(proc)
-    } else {
-        Err(FailedToOpenProcess)
     }
 }
 
