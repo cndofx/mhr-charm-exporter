@@ -22,4 +22,6 @@ fn main() {
         writeln!(&mut writer, "{}", c).unwrap();
         println!("{}", c);
     }
+
+    println!("\ncharms saved to charms.txt");
 }
