@@ -6,3 +6,4 @@ edition = "2021"
 [dependencies]
 process-memory = "0.4.0"
 sysinfo = "0.24.6"
+thiserror = "1.0.31"

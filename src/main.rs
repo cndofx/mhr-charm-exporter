@@ -6,8 +6,6 @@ use std::fs::File;
 use std::io::{BufWriter, Write};
 use process_memory::{DataMember, Memory, ProcessHandle};
 
-use process::GameOpenError::{FailedToOpenProcess, NoGameProcessFound};
-
 #[cfg(windows)]
 fn main() {
     let proc = process::get_process_handle("MonsterHunterRise.exe").unwrap();

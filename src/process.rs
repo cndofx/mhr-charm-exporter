@@ -1,46 +1,31 @@
 use process_memory::{ProcessHandle, TryIntoProcessHandle};
-use sysinfo::{System, SystemExt, ProcessExt, PidExt};
+use sysinfo::{PidExt, ProcessExt, System, SystemExt};
+use thiserror::Error;
 
-#[derive(Debug)]
-pub enum GameOpenError {
-    NoGameProcessFound,
-    FailedToOpenProcess,
+#[derive(Error, Debug)]
+pub enum ProcessError {
+    #[error("game process not found")]
+    ProcessNotFound,
+    #[error("unable to open game process")]
+    ProcessCannotOpen,
 }
 
-pub fn get_process_id(process_name: &str) -> Result<u32, GameOpenError> {
+pub fn get_process_id(process_name: &str) -> Result<u32, ProcessError> {
     let system = System::new_all();
     let mut processes = system.processes_by_name(process_name);
 
     if let Some(process) = processes.next() {
         Ok(process.pid().as_u32())
     } else {
-        Err(GameOpenError::NoGameProcessFound)
+        Err(ProcessError::ProcessNotFound)
     }
 }
 
-pub fn get_process_handle(process_name: &str) -> Result<ProcessHandle, GameOpenError> {
+pub fn get_process_handle(process_name: &str) -> Result<ProcessHandle, ProcessError> {
     let pid = get_process_id(process_name)?;
     if let Ok(handle) = pid.try_into_process_handle() {
         Ok(handle)
     } else {
-        Err(GameOpenError::FailedToOpenProcess)
+        Err(ProcessError::ProcessCannotOpen)
     }
 }
-
-// pub fn open_game_process() -> Result<ProcessHandle, GameOpenError> {
-//     let mut sys = System::new_all();
-//     sys.refresh_components();
-
-//     let procs = sys.processes_by_name("MonsterHunterRise.exe");
-
-//     if procs.is_empty() {
-//         return Err(GameOpenError::NoGameProcessFound);
-//     }
-
-//     if let Ok(proc) = procs[0].pid().as_u32().try_into_process_handle() {
-//         Ok(proc)
-//     } else {
-//         Err(GameOpenError::FailedToOpenProcess)
-//     }
-// }
-
