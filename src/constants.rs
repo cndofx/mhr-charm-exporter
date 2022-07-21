@@ -1,4 +1,4 @@
-pub(crate) const SKILL_NAMES: [&str; 129] = [
+pub(crate) const SKILL_NAMES: [&str; 134] = [
     "",
     "Attack Boost",
     "Agitator",
@@ -118,6 +118,9 @@ pub(crate) const SKILL_NAMES: [&str; 129] = [
     "Coalescence",
     "Bloodlust",
     "",
+    "",
+    "",
+    "",
     "Redirection",
     "Spiribird's Call",
     "Charge Master",
@@ -126,8 +129,10 @@ pub(crate) const SKILL_NAMES: [&str; 129] = [
     "Grinder (S)",
     "Bladescale Hone",
     "Wall Runner (Boost)",
-    "Quick Breath",
+    "",
     "Chain Crit",
+    "",
+    "Quick Breath",
 ];
 
 pub(crate) const CHARM_EQUIPMENT_TYPE: u32 = 3;
