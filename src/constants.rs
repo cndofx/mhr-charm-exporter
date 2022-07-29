@@ -39,7 +39,7 @@ pub(crate) const SKILL_NAMES: [&str; 134] = [
     "Offensive Guard",
     "Critical Draw",
     "Punishing Draw",
-    "Quick Sheath",
+    "Quick Sheathe",
     "Slugger",
     "Stamina Thief",
     "Affinity Sliding",
