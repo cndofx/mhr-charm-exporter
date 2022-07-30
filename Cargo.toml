@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+anyhow = "1.0.58"
 process-memory = "0.4.0"
 sysinfo = "0.24.6"
 thiserror = "1.0.31"
