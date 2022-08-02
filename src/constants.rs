@@ -62,7 +62,7 @@ pub(crate) const SKILL_NAMES: [&str; 134] = [
     "Speed Eating",
     "Earplugs",
     "Windproof",
-    "Tremor Resitance",
+    "Tremor Resistance",
     "Bubbly Dance",
     "Evade Window",
     "Evade Extender",
